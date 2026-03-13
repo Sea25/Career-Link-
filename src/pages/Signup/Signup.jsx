@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { signupUser } from '../../services/authService';
 import './Signup.css';
 
 export default function Signup() {
@@ -11,7 +11,6 @@ export default function Signup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { signup } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,7 +22,7 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      await signup(email, password, name);
+      await signupUser(name, email, password);
       navigate('/dashboard');
     } catch (err) {
       setError('Failed to create an account. Please try again.');
@@ -56,6 +55,7 @@ export default function Signup() {
                 placeholder="John Doe"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
               />
             </div>
             <div className="form-group">
@@ -65,6 +65,7 @@ export default function Signup() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="form-group">
@@ -83,6 +84,7 @@ export default function Signup() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             
@@ -90,13 +92,7 @@ export default function Signup() {
               {loading ? 'Signing up...' : 'Sign up'}
             </button>
             
-            <div className="social-login">
-              <p>Or Signup with</p>
-              <div className="social-buttons">
-                <button type="button" className="social-btn" onClick={() => navigate('/dashboard')}>Google</button>
-                <button type="button" className="social-btn" onClick={() => navigate('/dashboard')}>Facebook</button>
-              </div>
-            </div>
+
           </form>
           
           <p className="auth-redirect">

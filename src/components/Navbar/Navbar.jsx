@@ -1,13 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { logoutUser } from '../../services/authService';
 import './Navbar.css';
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      navigate('/login');
+    } catch (err) {
+      console.error("Failed to log out", err);
+    }
   };
 
   return (
@@ -27,8 +34,8 @@ export default function Navbar() {
           </li>
           <li>
             <Link 
-              to="/skill-gap-analyzer"
-              className={location.pathname === '/skill-gap-analyzer' ? 'active' : ''}
+              to="/skill-gap"
+              className={location.pathname === '/skill-gap' ? 'active' : ''}
             >
               Skill Gap
             </Link>
@@ -51,7 +58,7 @@ export default function Navbar() {
           </li>
         </ul>
         <div className="navbar-user">
-          {user && <span className="user-greeting">Hi, {user.displayName || user.email.split('@')[0]}</span>}
+          {user && <span className="user-greeting">Hi, {user.displayName || user.email?.split('@')[0]}</span>}
           <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
       </div>

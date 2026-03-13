@@ -1,55 +1,27 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../services/firebase";
 
 const AuthContext = createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
-
-export function AuthProvider({ children }) {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Dummy login function for skeleton app
-  function login(email, password) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const dummyUser = { email, displayName: email.split('@')[0] };
-        setUser(dummyUser);
-        resolve(dummyUser);
-      }, 500);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
     });
-  }
 
-  // Dummy signup function for skeleton app
-  function signup(email, password, name) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const dummyUser = { email, displayName: name || email.split('@')[0] };
-        setUser(dummyUser);
-        resolve(dummyUser);
-      }, 500);
-    });
-  }
-
-  function logout() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        setUser(null);
-        resolve();
-      }, 300);
-    });
-  }
-
-  const value = {
-    user,
-    login,
-    signup,
-    logout
-  };
+    return () => unsubscribe();
+  }, []);
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, loading }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
+
+export const useAuth = () => useContext(AuthContext);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { loginUser } from '../../services/authService';
 import './Login.css';
 
 export default function Login() {
@@ -9,7 +9,6 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,10 +20,10 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await login(email, password);
+      await loginUser(email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError('Failed to login. Please try again.');
+      setError('Failed to login. Please check your credentials.');
     } finally {
       setLoading(false);
     }
@@ -54,6 +53,7 @@ export default function Login() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="form-group">
@@ -63,6 +63,7 @@ export default function Login() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             
@@ -70,13 +71,7 @@ export default function Login() {
               {loading ? 'Logging in...' : 'Login'}
             </button>
             
-            <div className="social-login">
-              <p>Or Sign in with</p>
-              <div className="social-buttons">
-                <button type="button" className="social-btn" onClick={() => navigate('/dashboard')}>Google</button>
-                <button type="button" className="social-btn" onClick={() => navigate('/dashboard')}>Facebook</button>
-              </div>
-            </div>
+
           </form>
           
           <p className="auth-redirect">
