@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { jobRoles } from '../../data/roles.js';
+import { jobRoles } from '../data/roles.js';
 import { 
   getRequiredSkills, 
   getMatchedSkills, 
   getMissingSkills, 
   calculateMatchPercentage 
-} from '../../utils/skillMatcher.js';
-import { generateRoadmap } from '../../utils/roadmapGenerator.js';
+} from '../utils/skillMatcher.js';
+import { generateRoadmap } from '../utils/roadmapGenerator.js';
 import './SkillGap.css';
 
 const SkillGap = () => {
