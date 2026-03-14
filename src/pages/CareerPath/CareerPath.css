@@ -1,9 +1,9 @@
-/* Reuse feature page styles since they all share the exact same structural components */
+/* Career Path Styles */
 .feature-page-container {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 0;
 }
@@ -50,49 +50,347 @@
   text-align: center;
 }
 
-.feature-content-placeholder {
+/* Selection Section */
+.selection-container {
   background-color: var(--bg-card);
-  border: 1px dashed var(--border-color);
-  border-radius: 24px;
-  padding: 5rem 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.cp-select {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23cbd5e1%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+  transition: border-color 0.2s;
+}
+
+.cp-select:focus {
+  border-color: var(--primary-color);
+}
+
+.generate-btn {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.generate-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.generate-btn:active {
+  transform: translateY(0);
+}
+
+/* Results Section Update for Space Map */
+.paths-results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  animation: fadeIn 0.5s ease-out;
+  padding-bottom: 2rem;
+}
+
+.results-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+/* Constellation Container */
+.constellation-scroll-area {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 20px;
+  padding-bottom: 1rem;
+}
+
+.constellation-scroll-area::-webkit-scrollbar {
+  height: 8px;
+}
+.constellation-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.constellation-title {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.constellation-wrapper {
+  position: relative;
+  min-width: 900px;
+  width: 100%;
+  height: 500px;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #0b1120 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Galaxy Background Elements */
+.galaxy-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(circle at 30% 50%, rgba(79, 70, 229, 0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.stars-layer-1, .stars-layer-2 {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+
+.stars-layer-1 {
+  background-image: 
+    radial-gradient(1px 1px at 10% 20%, white, transparent),
+    radial-gradient(1.5px 1.5px at 30% 50%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 40% 90%, white, transparent),
+    radial-gradient(2px 2px at 50% 10%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 20% 70%, white, transparent);
+  background-size: 150px 150px;
+  opacity: 0.4;
+}
+
+.stars-layer-2 {
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #a5b4fc, transparent),
+    radial-gradient(1px 1px at 50% 60%, white, transparent),
+    radial-gradient(1.5px 1.5px at 80% 20%, #fbcfe8, transparent),
+    radial-gradient(1px 1px at 15% 85%, white, transparent);
+  background-size: 250px 250px;
+  opacity: 0.3;
+  animation: twinkling 4s infinite alternate;
+}
+
+@keyframes twinkling {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.5; }
+}
+
+/* Column Labels */
+.column-label {
+  position: absolute;
+  transform: translateX(-50%);
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: rgba(15, 23, 42, 0.7);
+  padding: 6px 16px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Constellation Lines SVG */
+.constellation-lines {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.constellation-line {
+  stroke: rgba(200, 220, 255, 0.15);
+  stroke-width: 1.5px;
+  transition: all 0.3s ease;
+}
+
+.constellation-wrapper:hover .constellation-line:not(.highlight-line) {
+  stroke: rgba(200, 220, 255, 0.4);
+  filter: drop-shadow(0 0 4px rgba(200, 220, 255, 0.4));
+}
+
+.highlight-line {
+  stroke: rgba(255, 255, 255, 0.9) !important;
+  stroke-width: 2.5px !important;
+  filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.8)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+  z-index: 5;
+}
+
+/* Glowing Nodes */
+.constellation-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: crosshair;
+}
+
+.highlight-node {
+  z-index: 25;
+}
+
+.star-core {
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.core-highlight {
+  transform: scale(2.5) !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 15px #fff, 0 0 25px var(--primary-color) !important;
+}
+
+.star-glow {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  filter: blur(8px);
+  z-index: 1;
+  opacity: 0.3;
+  animation: pulse 3s infinite alternate;
+}
+
+.glow-highlight {
+  opacity: 1 !important;
+  transform: scale(1.6) !important;
+  filter: blur(10px) !important;
+}
+
+.constellation-node:hover .star-core {
+  transform: scale(1.8);
+  background-color: #fff;
+}
+.constellation-node:hover .star-glow {
+  opacity: 0.8;
+}
+
+/* Category Glow Colors */
+.glow-degree { background: #ec4899; box-shadow: 0 0 15px #ec4899; }
+.bg-core-degree { box-shadow: 0 0 10px #ec4899, 0 0 20px rgba(255,255,255,0.5); }
+
+.glow-branch { background: #8b5cf6; box-shadow: 0 0 15px #8b5cf6; }
+.bg-core-branch { box-shadow: 0 0 10px #8b5cf6, 0 0 20px rgba(255,255,255,0.5); }
+
+.glow-skill { background: #3b82f6; box-shadow: 0 0 15px #3b82f6; }
+.bg-core-skill { box-shadow: 0 0 10px #3b82f6, 0 0 20px rgba(255,255,255,0.5); }
+
+.glow-job { background: #10b981; box-shadow: 0 0 15px #10b981; }
+.bg-core-job { box-shadow: 0 0 10px #10b981, 0 0 20px rgba(255,255,255,0.5); }
+
+.glow-company { background: #f59e0b; box-shadow: 0 0 15px #f59e0b; }
+.bg-core-company { box-shadow: 0 0 10px #f59e0b, 0 0 20px rgba(255,255,255,0.5); }
+
+/* Node Labels */
+.star-label {
+  position: absolute;
+  top: 15px;
+  width: 140px;
   text-align: center;
-  min-height: 400px;
-}
-
-.placeholder-animation {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 2rem;
-  animation: float 3s ease-in-out infinite;
-}
-
-.pulse-circle {
-  width: 100%;
-  height: 100%;
-}
-
-.feature-content-placeholder h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.hackathon-notice {
-  font-size: 1.25rem;
-  color: var(--primary-color);
+  font-size: 0.75rem;
   font-weight: 500;
-  background-color: rgba(79, 70, 229, 0.1);
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(79, 70, 229, 0.2);
+  color: #94a3b8;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0,0,0,1);
+  background: rgba(15, 23, 42, 0.5);
+  padding: 4px 6px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 15;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+.label-highlight {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  background: rgba(15, 23, 42, 0.9) !important;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+}
+
+.constellation-node:hover .star-label {
+  color: #fff;
+  transform: scale(1.05);
+  top: 20px;
+  z-index: 20;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.4; }
+  100% { transform: scale(1.4); opacity: 0.9; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .feature-header h1 {
+    font-size: 2rem;
+  }
+  
+  .selection-container {
+    padding: 1.5rem;
+  }
 }
