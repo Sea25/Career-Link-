@@ -13,7 +13,8 @@ export const generateRoadmap = (missingSkills) => {
       skillName: skill,
       instruction: resource.description,
       youtubeLink: resource.youtube,
-      websiteLink: resource.website
+      websiteLink: resource.website,
+      timeRequired: resource.timeRequired
     };
   });
 };

@@ -1,88 +1,319 @@
-.skill-gap-container {
-  max-width: 1000px;
+/* SkillGap.css */
+.feature-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #333;
+  padding: 2rem 1rem;
+  color: var(--text-primary, #ffffff);
 }
 
-.skill-gap-header {
+.feature-header {
   text-align: center;
-  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.skill-gap-header h1 {
+.icon-wrapper {
+  background-color: rgba(79, 70, 229, 0.1);
+  color: var(--primary-color, #6366f1);
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.icon-wrapper svg {
+  width: 40px;
+  height: 40px;
+}
+
+.feature-header h1 {
   font-size: 2.5rem;
-  color: #1e293b;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff, var(--text-secondary, #94a3b8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.skill-gap-header p {
-  color: #64748b;
+.feature-description {
   font-size: 1.1rem;
+  color: var(--text-secondary, #94a3b8);
+  line-height: 1.6;
+  max-width: 600px;
+  text-align: center;
 }
 
-/* Input Section */
-.skill-input-section {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  margin-bottom: 3rem;
+/* Card layout */
+.analyzer-card {
+  background: var(--bg-card, #1e1e2d);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .input-group {
-  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
 }
 
 .input-group label {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #475569;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #e2e8f0;
 }
 
 .input-group select,
 .input-group input {
-  padding: 0.75rem 1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #f8fafc;
   font-size: 1rem;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  font-family: inherit;
 }
 
 .input-group select:focus,
 .input-group input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--primary-color, #6366f1);
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
-.analyze-btn {
-  background: #3b82f6;
+.input-group select option {
+  background-color: #1e1e2d;
+  color: white;
+}
+
+.analyze-button {
+  background: linear-gradient(135deg, var(--primary-color, #4f46e5), #8b5cf6);
   color: white;
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  width: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
 }
 
-.analyze-btn:hover {
-  background: #2563eb;
+.analyze-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
 }
 
-.analyze-btn:active {
-  transform: translateY(1px);
+.analyze-button:active {
+  transform: translateY(0);
 }
 
-/* Results Section */
-.results-section {
-  animation: fadeIn 0.5s ease-out;
+.result-section {
+  margin-top: 1.5rem;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.4s ease-out;
+  text-align: left;
+}
+
+.result-section h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #f1f5f9;
+  font-size: 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.75rem;
+}
+
+.result-item {
+  margin-bottom: 1.5rem;
+}
+
+.result-item:last-child {
+  margin-bottom: 0;
+}
+
+.result-item h4 {
+  margin: 0 0 0.75rem 0;
+  color: #94a3b8;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.skill-tag.required {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.skill-tag.yours {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.skill-tag.missing {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.empty-state {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+/* ROADMAP STYLING ADDITIONS */
+.roadmap-container {
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.roadmap-title {
+  color: #f1f5f9;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.roadmap-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.roadmap-step-card {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--primary-color, #6366f1);
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.roadmap-step-card:hover {
+  transform: translateX(4px);
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.step-header {
+  margin-bottom: 0.75rem;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.step-number {
+  background: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.step-time {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.step-skill {
+  font-size: 1.2rem;
+  color: #f8fafc;
+  margin: 0;
+  font-weight: 600;
+}
+
+.step-desc {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 1.25rem 0;
+}
+
+.step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.step-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.youtube-link {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.youtube-link:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fecaca;
+}
+
+.website-link {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.website-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 @keyframes fadeIn {
@@ -90,166 +321,16 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-.match-score-card {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.match-score-card h2 {
-  color: #1e293b;
-  margin-bottom: 1rem;
-}
-
-.score-circle {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
-  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
-}
-
-/* Skills Breakdown */
-.skills-breakdown {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.skill-list-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.skill-list-card h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #f1f5f9;
-}
-
-.required-card h3 { color: #475569; }
-.matched-card h3 { color: #10b981; }
-.missing-card h3 { color: #ef4444; }
-
-.skill-list-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skill-list-card li {
-  padding: 0.5rem 0;
-  color: #334155;
-}
-
-/* Roadmap Section */
-.roadmap-section h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #1e293b;
-}
-
-.roadmap-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.roadmap-card {
-  background: white;
-  border-left: 4px solid #3b82f6;
-  padding: 1.5rem;
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s;
-}
-
-.roadmap-card:hover {
-  transform: translateX(5px);
-}
-
-.step-badge {
-  display: inline-block;
-  background: #eff6ff;
-  color: #2563eb;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  align-self: flex-start;
-}
-
-.step-content h3 {
-  margin: 0 0 0.5rem 0;
-  color: #1e293b;
-  font-size: 1.25rem;
-}
-
-.step-content p {
-  color: #64748b;
-  margin: 0 0 1.25rem 0;
-  line-height: 1.5;
-}
-
-.resource-links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.resource-link {
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-
-.youtube-link {
-  background: #fee2e2;
-  color: #dc2626;
-}
-
-.youtube-link:hover {
-  background: #fecaca;
-}
-
-.website-link {
-  background: #f1f5f9;
-  color: #475569;
-}
-
-.website-link:hover {
-  background: #e2e8f0;
-}
-
-@media (min-width: 768px) {
-  .input-group {
-    flex-direction: row;
-    align-items: center;
+@media (max-width: 600px) {
+  .feature-header h1 {
+    font-size: 2rem;
   }
   
-  .input-group label {
-    width: 300px;
-    margin-bottom: 0;
+  .analyzer-card {
+    padding: 1.5rem;
   }
   
-  .input-group select,
-  .input-group input {
-    flex: 1;
+  .result-section {
+    padding: 1.5rem;
   }
 }
