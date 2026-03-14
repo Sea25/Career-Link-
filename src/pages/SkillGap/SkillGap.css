@@ -198,6 +198,124 @@
   padding: 0.5rem 0;
 }
 
+/* ROADMAP STYLING ADDITIONS */
+.roadmap-container {
+  margin-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.roadmap-title {
+  color: #f1f5f9;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.roadmap-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.roadmap-step-card {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--primary-color, #6366f1);
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.roadmap-step-card:hover {
+  transform: translateX(4px);
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.step-header {
+  margin-bottom: 0.75rem;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.step-number {
+  background: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.step-time {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.step-skill {
+  font-size: 1.2rem;
+  color: #f8fafc;
+  margin: 0;
+  font-weight: 600;
+}
+
+.step-desc {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 1.25rem 0;
+}
+
+.step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.step-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.youtube-link {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.youtube-link:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fecaca;
+}
+
+.website-link {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.website-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
