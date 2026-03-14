@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { generateRoadmap } from '../../utils/roadmapGenerator.js';
 import './SkillGap.css';
 
 const JOB_CATEGORIES = {
@@ -67,10 +68,14 @@ export default function SkillGap() {
       skill => !userSkillsLower.includes(skill.toLowerCase())
     );
 
+    // Generate Roadmap for missing skills
+    const roadmap = generateRoadmap(missingSkills);
+
     setResults({
       requiredSkills,
       userSkills: userSkillsArray.length > 0 ? userSkillsArray : ["None"],
-      missingSkills
+      missingSkills,
+      roadmap
     });
   };
 
@@ -179,6 +184,37 @@ export default function SkillGap() {
               </div>
 
             </div>
+            
+            {/* ROADMAP SECTION ADDITION */}
+            {results.roadmap && results.roadmap.length > 0 && (
+              <div className="roadmap-container">
+                <h4 className="roadmap-title">Recommended Learning Roadmap</h4>
+                <div className="roadmap-timeline">
+                  {results.roadmap.map((step, idx) => (
+                    <div key={idx} className="roadmap-step-card">
+                      <div className="step-header">
+                        <div className="step-indicator">
+                          <span className="step-number">Step {idx + 1}</span>
+                          <span className="step-time">⏱ {step.timeRequired}</span>
+                        </div>
+                        <h5 className="step-skill">{step.skillName}</h5>
+                      </div>
+                      <p className="step-desc">{step.instruction}</p>
+                      <div className="step-links">
+                        <a href={step.youtubeLink} target="_blank" rel="noreferrer" className="step-link youtube-link">
+                          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                          Watch Tutorial
+                        </a>
+                        <a href={step.websiteLink} target="_blank" rel="noreferrer" className="step-link website-link">
+                          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                          Read Guide
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
           </div>
 
