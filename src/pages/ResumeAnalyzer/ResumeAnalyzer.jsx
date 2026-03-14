@@ -205,9 +205,9 @@ export default function ResumeAnalyzer() {
   };
 
   const grade = result
-    ? result.overall >= 80 ? { label: 'Strong', color: '#16a34a' }
-      : result.overall >= 60 ? { label: 'Average', color: '#d97706' }
-        : { label: 'Needs work', color: '#dc2626' }
+    ? result.overall >= 80 ? { label: 'Strong', color: '#10b981' }
+      : result.overall >= 60 ? { label: 'Average', color: '#f59e0b' }
+        : { label: 'Needs work', color: '#ef4444' }
     : null;
 
   const C = 2 * Math.PI * 36;
@@ -354,7 +354,7 @@ export default function ResumeAnalyzer() {
             <div className="ra-score-hero">
               <div className="ra-ring">
                 <svg width="90" height="90" viewBox="0 0 90 90">
-                  <circle cx="45" cy="45" r="36" fill="none" stroke="#e5e7eb" strokeWidth="8" />
+                  <circle cx="45" cy="45" r="36" fill="none" stroke="var(--border-color, #334155)" strokeWidth="8" />
                   <circle cx="45" cy="45" r="36" fill="none"
                     stroke={grade.color} strokeWidth="8"
                     strokeDasharray={`${C * (result.overall / 100)} ${C}`}
