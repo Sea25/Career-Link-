@@ -47,19 +47,20 @@ const getRequiredSkills = (selectedRole) => {
 };
 
 export default function SkillGap() {
-  const [targetRole, setTargetRole] = useState("Frontend Developer");
+
+  const [targetRole, setTargetRole] = useState("");
   const [currentSkillsInput, setCurrentSkillsInput] = useState("");
   const [results, setResults] = useState(null);
 
   const handleAnalyze = () => {
+
     const requiredSkills = getRequiredSkills(targetRole);
-    
-    // Parse user input into an array of trimmed, non-empty, lowercase strings for comparison
+
     const userSkillsArray = currentSkillsInput
       .split(',')
       .map(s => s.trim())
       .filter(s => s.length > 0);
-    
+
     const userSkillsLower = userSkillsArray.map(s => s.toLowerCase());
 
     const missingSkills = requiredSkills.filter(
@@ -74,28 +75,33 @@ export default function SkillGap() {
   };
 
   return (
+
     <div className="feature-page-container">
+
       <div className="feature-header">
-        <div className="icon-wrapper">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 20h9"></path>
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-          </svg>
-        </div>
+
         <h1>Skill Gap Analyzer</h1>
+
         <p className="feature-description">
           Analyze your current skills against industry demands. Identify missing skills and get personalized recommendations on what to learn next to land your dream job.
         </p>
+
       </div>
 
       <div className="analyzer-card">
+
         <div className="input-group">
+
           <label htmlFor="role-select">Target Job Role</label>
-          <select 
-            id="role-select" 
-            value={targetRole} 
+
+          <select
+            id="role-select"
+            value={targetRole}
             onChange={(e) => setTargetRole(e.target.value)}
           >
+
+            <option value="">Select a Job Role</option>
+
             {Object.entries(JOB_CATEGORIES).map(([category, roles]) => (
               <optgroup key={category} label={category}>
                 {Object.keys(roles).map(role => (
@@ -103,18 +109,23 @@ export default function SkillGap() {
                 ))}
               </optgroup>
             ))}
+
           </select>
+
         </div>
 
         <div className="input-group">
+
           <label htmlFor="skills-input">Your Current Skills</label>
-          <input 
-            type="text" 
-            id="skills-input" 
-            placeholder="Example: HTML, CSS, JavaScript, Communication, Excel, Creativity"
+
+          <input
+            type="text"
+            id="skills-input"
+            placeholder="Example: HTML, CSS, JavaScript, Communication, Excel"
             value={currentSkillsInput}
             onChange={(e) => setCurrentSkillsInput(e.target.value)}
           />
+
         </div>
 
         <button className="analyze-button" onClick={handleAnalyze}>
@@ -122,43 +133,59 @@ export default function SkillGap() {
         </button>
 
         {results && (
+
           <div className="result-section">
+
             <h3>Analysis Results</h3>
-            
+
             <div className="result-item">
+
               <h4>Required Skills</h4>
+
               <div className="skill-tags">
                 {results.requiredSkills.map(skill => (
                   <span key={skill} className="skill-tag required">{skill}</span>
                 ))}
               </div>
+
             </div>
 
             <div className="result-item">
+
               <h4>Your Skills</h4>
+
               <div className="skill-tags">
                 {results.userSkills.map(skill => (
                   <span key={skill} className="skill-tag yours">{skill}</span>
                 ))}
               </div>
+
             </div>
 
             <div className="result-item">
+
               <h4>Missing Skills</h4>
+
               <div className="skill-tags">
                 {results.missingSkills.length > 0 ? (
                   results.missingSkills.map(skill => (
                     <span key={skill} className="skill-tag missing">{skill}</span>
                   ))
                 ) : (
-                  <span className="empty-state">You have all the required skills! 🎉</span>
+                  <span className="empty-state">
+                    You have all the required skills! 🎉
+                  </span>
                 )}
               </div>
+
             </div>
-            
+
           </div>
+
         )}
+
       </div>
+
     </div>
   );
 }
